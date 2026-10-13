@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مدار لإستيراد المنتجات البلاستيكية - قريباً</title>
+    <title>بلاستيك مدار - Madar Plast - قريباً</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts (Cairo) -->
@@ -89,7 +89,7 @@
 
         /* Logo Area */
         .logo-container {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             display: inline-block;
         }
 
@@ -130,8 +130,17 @@
             color: var(--primary-blue-dark);
             font-size: 2.2rem;
             font-weight: 800;
-            margin-bottom: 12px;
+            margin-bottom: 4px;
             line-height: 1.3;
+        }
+
+        .brand-en {
+            color: var(--primary-orange);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
         }
 
         .subtitle {
@@ -195,27 +204,58 @@
         }
 
         /* Specialization Section */
-        .specialization-box {
-            background-color: rgba(0, 75, 135, 0.03);
-            border-right: 4px solid var(--primary-blue);
-            padding: 20px 25px;
-            border-radius: 8px;
+        .specialization-container {
             text-align: right;
             margin-bottom: 35px;
         }
 
-        .specialization-box h3 {
+        .specialization-title {
             color: var(--primary-orange);
             font-size: 1.1rem;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 8px;
+            font-weight: 700;
         }
 
-        .specialization-box p {
+        .specialization-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+        }
+
+        .specialization-card {
+            background-color: rgba(0, 75, 135, 0.03);
+            border-right: 4px solid var(--primary-blue);
+            padding: 18px 20px;
+            border-radius: 8px;
+            border-top: 1px solid var(--border-color);
+            border-left: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .specialization-card .number {
+            background-color: var(--primary-blue);
+            color: white;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .specialization-card .text {
             color: var(--primary-blue-dark);
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             font-weight: 700;
             line-height: 1.5;
         }
@@ -338,7 +378,7 @@
             .subtitle {
                 font-size: 0.95rem;
             }
-            .contact-grid {
+            .contact-grid, .specialization-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -357,10 +397,8 @@
             
             <!-- Company Logo Image -->
             <div class="logo-container">
-                <img src="logo.png" alt="شعار مدار لإستيراد المنتجات البلاستيكية" class="company-logo">
+                <img src="logo.png" alt="شعار بلاستيك مدار" class="company-logo">
             </div>
-
-            <br>
 
             <!-- Status Badge -->
             <div class="badge">
@@ -368,7 +406,8 @@
             </div>
 
             <!-- Header Titles -->
-            <h1>مدار لإستيراد المنتجات البلاستيكية</h1>
+            <h1>بلاستيك مدار</h1>
+            <div class="brand-en">Madar Plast</div>
             <p class="subtitle">نسعى دائماً لتقديم أفضل المنتجات البلاستيكية بأعلى معايير الجودة.</p>
 
             <!-- Progress Bar -->
@@ -382,10 +421,21 @@
                 </div>
             </div>
 
-            <!-- Specialization Area -->
-            <div class="specialization-box">
-                <h3><i class="fas fa-layer-group"></i> مجالات اختصاصنا:</h3>
-                <p>منتجات تمديدات الكهرباء الداخلية والحلول البلاستيكية الصناعية</p>
+            <!-- Specialization Section (2 Columns) -->
+            <div class="specialization-container">
+                <div class="specialization-title">
+                    <i class="fas fa-layer-group"></i> مجالات إختصاصنا:
+                </div>
+                <div class="specialization-grid">
+                    <div class="specialization-card">
+                        <div class="number">1</div>
+                        <div class="text">منتجات تمديدات الكهرباء الداخلية</div>
+                    </div>
+                    <div class="specialization-card">
+                        <div class="number">2</div>
+                        <div class="text">الحلول البلاستيكية الصناعية (المواد الخام)</div>
+                    </div>
+                </div>
             </div>
 
             <!-- Contact Numbers Section -->
@@ -440,7 +490,7 @@
 
     <!-- Footer -->
     <footer>
-        &copy; جميع الحقوق محفوظة لـ <strong>مدار لإستيراد المنتجات البلاستيكية</strong>
+        &copy; جميع الحقوق محفوظة لـ <strong>بلاستيك مدار - Madar Plast</strong>
     </footer>
 
 </body>
