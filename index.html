@@ -3,82 +3,445 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الموقع قيد الصيانه والتدشين</title>
+    <title>مدار لإستيراد المنتجات البلاستيكية - قريباً</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Cairo) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        :root {
+            --primary-blue: #004b87;
+            --primary-blue-dark: #003360;
+            --primary-orange: #ff6b00;
+            --primary-orange-hover: #e05e00;
+            --bg-light: #f4f7f9;
+            --card-bg: #ffffff;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --border-color: #e5e7eb;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
         body {
-            background-color: #f8f9fa;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background-color: var(--bg-light);
+            color: var(--text-main);
             min-height: 100vh;
-            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 75, 135, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 107, 0, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
         }
-        .container {
-            background: #ffffff;
-            padding: 40px 30px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+
+        /* Top Notification Bar */
+        .top-bar {
+            background: linear-gradient(90deg, var(--primary-blue-dark), var(--primary-blue));
+            color: #ffffff;
             text-align: center;
-            max-width: 480px;
+            padding: 10px 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .top-bar i {
+            color: var(--primary-orange);
+            margin-left: 8px;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
             width: 100%;
+            text-align: center;
         }
-        .logo {
-            max-width: 160px;
+
+        /* Card Wrapper */
+        .main-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,75,135,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--primary-orange));
+        }
+
+        /* Logo Area */
+        .logo-container {
+            margin-bottom: 25px;
+            display: inline-block;
+        }
+
+        .company-logo {
+            max-width: 260px;
+            max-height: 130px;
+            width: auto;
             height: auto;
-            margin-bottom: 24px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
         }
-        h1 {
-            font-size: 1.6rem;
-            color: #1a1a1a;
-            margin-bottom: 12px;
-        }
-        p {
-            color: #666;
+
+        /* Status Badge */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(255, 107, 0, 0.1);
+            color: var(--primary-orange);
+            padding: 6px 18px;
+            border-radius: 50px;
             font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 107, 0, 0.2);
         }
-        .contact-box {
-            background: #f1f5f9;
+
+        .badge i {
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Typography */
+        h1 {
+            color: var(--primary-blue-dark);
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        /* Progress Bar Section */
+        .progress-section {
+            background: #f8fafc;
             padding: 20px;
             border-radius: 12px;
-            text-align: right;
+            border: 1px solid var(--border-color);
+            margin-bottom: 35px;
         }
-        .contact-item {
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .progress-bar-container {
+            height: 12px;
+            background-color: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 80%;
+            background: linear-gradient(90deg, var(--primary-blue), var(--primary-orange));
+            border-radius: 10px;
+            transition: width 1s ease-in-out;
+            position: relative;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.3) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Specialization Section */
+        .specialization-box {
+            background-color: rgba(0, 75, 135, 0.03);
+            border-right: 4px solid var(--primary-blue);
+            padding: 20px 25px;
+            border-radius: 8px;
+            text-align: right;
+            margin-bottom: 35px;
+        }
+
+        .specialization-box h3 {
+            color: var(--primary-orange);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            margin-bottom: 12px;
-            color: #475569;
-            font-size: 0.95rem;
-            text-decoration: none;
+            gap: 8px;
         }
-        .contact-item:last-child { margin-bottom: 0; }
-        .contact-item strong { margin-left: 8px; color: #1e293b; }
+
+        .specialization-box p {
+            color: var(--primary-blue-dark);
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+
+        /* Contact Section */
+        .contact-title {
+            color: var(--primary-blue-dark);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .contact-card {
+            background: #ffffff;
+            border: 2px solid #edf2f7;
+            border-radius: 12px;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .contact-card:hover {
+            border-color: var(--primary-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 107, 0, 0.1);
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: rgba(0, 75, 135, 0.08);
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .contact-details {
+            text-align: right;
+        }
+
+        .contact-details .phone-number {
+            display: block;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--primary-blue-dark);
+            direction: ltr;
+        }
+
+        .contact-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+        }
+
+        .action-btn.call {
+            background-color: var(--primary-blue);
+        }
+
+        .action-btn.whatsapp {
+            background-color: #25D366;
+        }
+
+        .action-btn:hover {
+            opacity: 0.85;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            background: #ffffff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            .main-card {
+                padding: 25px 18px;
+            }
+            h1 {
+                font-size: 1.7rem;
+            }
+            .subtitle {
+                font-size: 0.95rem;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- استبدل logo.png برابط أو مسار شعار شركتك -->
-        <img src="logo.png" alt="شعار الشركة" class="logo">
-        
-        <h1>الموقع قيد التطوير والتدشين</h1>
-        <p>نعمل حالياً على تجهيز موقعنا الإلكتروني لخدمتكم بشكل أفضل. يمكنك التواصل معنا عبر الوسائل التالية:</p>
+    <!-- Top Announcement Bar -->
+    <div class="top-bar">
+        <i class="fas fa-tools"></i> نعمل حالياً على تطوير موقعنا الإلكتروني لخدمتكم بشكل أفضل!
+    </div>
 
-        <div class="contact-box">
-            <a href="tel:+96700000000" class="contact-item">
-                <strong>الهاتف:</strong> 00000000 967+
-            </a>
-            <a href="https://wa.me/96700000000" class="contact-item" target="_blank">
-                <strong>واتساب:</strong> تواصل معنا مباشرة
-            </a>
-            <a href="mailto:info@yourdomain.com" class="contact-item">
-                <strong>البريد:</strong> info@yourdomain.com
-            </a>
+    <!-- Main Container -->
+    <div class="container">
+        <div class="main-card">
+            
+            <!-- Company Logo Image -->
+            <div class="logo-container">
+                <img src="logo.png" alt="شعار مدار لإستيراد المنتجات البلاستيكية" class="company-logo">
+            </div>
+
+            <br>
+
+            <!-- Status Badge -->
+            <div class="badge">
+                <i class="fas fa-cog"></i> الموقع قيد الصيانة التطويرية
+            </div>
+
+            <!-- Header Titles -->
+            <h1>مدار لإستيراد المنتجات البلاستيكية</h1>
+            <p class="subtitle">نسعى دائماً لتقديم أفضل المنتجات البلاستيكية بأعلى معايير الجودة.</p>
+
+            <!-- Progress Bar -->
+            <div class="progress-section">
+                <div class="progress-header">
+                    <span>نسبة إنجاز الموقع</span>
+                    <span>80%</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+
+            <!-- Specialization Area -->
+            <div class="specialization-box">
+                <h3><i class="fas fa-layer-group"></i> مجالات اختصاصنا:</h3>
+                <p>منتجات تمديدات الكهرباء الداخلية والحلول البلاستيكية الصناعية</p>
+            </div>
+
+            <!-- Contact Numbers Section -->
+            <div class="contact-title">
+                <i class="fas fa-headset" style="color: var(--primary-orange);"></i> يسعدنا تواصلكم معنا عبر الأرقام التالية:
+            </div>
+
+            <div class="contact-grid">
+                <!-- Phone 1 -->
+                <div class="contact-card">
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <span class="phone-number">778185577</span>
+                        </div>
+                    </div>
+                    <div class="contact-actions">
+                        <a href="tel:778185577" class="action-btn call" title="اتصال">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="https://wa.me/967778185577" class="action-btn whatsapp" target="_blank" title="واتساب">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Phone 2 -->
+                <div class="contact-card">
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <span class="phone-number">773831108</span>
+                        </div>
+                    </div>
+                    <div class="contact-actions">
+                        <a href="tel:773831108" class="action-btn call" title="اتصال">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="https://wa.me/967773831108" class="action-btn whatsapp" target="_blank" title="واتساب">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; جميع الحقوق محفوظة لـ <strong>مدار لإستيراد المنتجات البلاستيكية</strong>
+    </footer>
 
 </body>
 </html>
